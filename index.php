@@ -21,14 +21,14 @@
             </li>
           </ul>
     </nav>
-
+<form method="GET">
 <table class="table">
 <tr>
     <td>
         name
     </td>
     <td>
-        <input type="text"class="form-control">
+        <input type="text" name="getName"class="form-control">
     </td>
 </tr>
 <tr>
@@ -36,7 +36,7 @@
         roll number
     </td>
     <td>
-        <input type="text"class="form-control">
+        <input type="text" name="getRoll" class="form-control">
     </td>
 </tr>
 <tr>
@@ -44,7 +44,7 @@
         college
     </td>
     <td>
-        <input type="text"class="form-control">
+        <input type="text" name="getCollege" class="form-control">
     </td>
 </tr>
 <tr>
@@ -52,7 +52,7 @@
         Admission number
     </td>
     <td>
-        <input type="text"class="form-control">
+        <input type="text" name="getAddmno" class="form-control">
     </td>
 </tr>
 <tr>
@@ -60,11 +60,28 @@
     
     </td>
     <td>
-        <button class="btn btn-danger">
+        <button type="submit" name="submit" class="btn btn-danger">
             submit
         </button>
     </td>
 </tr>
 </table>
+</form>
     </body>
 </html>
+<?php
+if(isset($_GET["submit"]))
+{
+    $Name=$_GET["getName"];
+    $Roll=$_GET["getRoll"];
+    $College=$_GET["getCollege"];
+    $Addmn=$_GET["getAddmno"];
+    echo $Name;
+    echo "<br>";
+    echo $Roll;
+    echo "<br>";
+    echo $College;
+    echo "<br>";
+    echo $Addmn;
+}
+?>
