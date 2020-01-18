@@ -11,13 +11,13 @@
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <ul class="navbar-nav">
             <li class="nav-item active">
-              <a class="nav-link" href="index.html">Student Entry</a>
+              <a class="nav-link" href="index.php">Student Entry</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="search.html">Search</a>
+              <a class="nav-link" href="search.php">Search</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="edit.html">Edit</a>
+              <a class="nav-link" href="edit.php">Edit</a>
             </li>
           </ul>
           </nav>
@@ -25,13 +25,14 @@
        Search
    </h1> 
    <br>
-   <table>
+   <form method="GET">
+   <table class="table">
        <tr>
            <td>
                student name
            </td>
            <td>
-               <input type="text">
+               <input type="text"class="form-control"name="getName">
            </td>
        </tr>
        <tr>
@@ -39,13 +40,21 @@
 
            </td>
            <td>
-               <button class="btn btn-warning">
+               <button type="submit" class="btn btn-warning"name="submit">
                    search
                </button>
            </td>
        </tr>
 
    </table>
+   </form>
 
 </body>
 </html>
+<?php
+if(isset($_GET["submit"]))
+{
+$Name=$_GET["getName"];
+echo $Name;
+}
+?>
