@@ -19,13 +19,16 @@
             <li class="nav-item">
               <a class="nav-link" href="edit.php">Edit</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="delete.php">Delete</a>
+            </li>
           </ul>
           </nav>
    <h1>
        Search
    </h1> 
    <br>
-   <form method="GET">
+   <form method="POST">
    <table class="table">
        <tr>
            <td>
@@ -52,9 +55,9 @@
 </body>
 </html>
 <?php
-if(isset($_GET["submit"]))
+if(isset($_POST["submit"]))
 {
-$Admno=$_GET["getaddmno"];
+$Admno=$_POST["getaddmno"];
 $Servername="localhost";
 $Dbusername="root";
 $Dbpassword="";

@@ -19,9 +19,12 @@
             <li class="nav-item">
               <a class="nav-link" href="edit.php">Edit</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="delete.php">Delete</a>
+            </li>
           </ul>
     </nav>
-<form method="GET">
+<form method="POST">
 <table class="table">
 <tr>
     <td>
@@ -70,12 +73,12 @@
     </body>
 </html>
 <?php
-if(isset($_GET["submit"]))
+if(isset($_POST["submit"]))
 {
-    $Name=$_GET["getName"];
-    $Roll=$_GET["getRoll"];
-    $College=$_GET["getCollege"];
-    $Addmn=$_GET["getAddmno"];
+    $Name=$_POST["getName"];
+    $Roll=$_POST["getRoll"];
+    $College=$_POST["getCollege"];
+    $Addmn=$_POST["getAddmno"];
     $Servername="localhost";
     $Dbusername="root";
     $Dbpassword="";

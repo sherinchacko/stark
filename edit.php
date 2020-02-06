@@ -19,12 +19,15 @@
             <li class="nav-item">
               <a class="nav-link" href="edit.php">Edit</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="delete.php">Delete</a>
+            </li>
           </ul>
     </nav>
     <h2>
         Edit
     </h2>
-    <form method="GET">
+    <form method="POST">
     <table class="table">
         <tr>
             <td>
@@ -49,9 +52,9 @@
 </body>
 </html>
 <?php
-if(isset($_GET["submit"]))
+if(isset($_POST["submit"]))
 {
-$Roll=$_GET["getRoll"];
+$Roll=$_POST["getRoll"];
 $Servername="localhost";
 $Dbusername="root";
 $Dbpassword="";
@@ -66,13 +69,39 @@ if($result->num_rows>0)
         $Name=$row["Name"];
         $Addmno=$row["Admno"];
         $College=$row["College"];
-        echo "<table class='table'> <tr> <td> name </td> <td> <input type='text' value='$Name'/> </td> </tr>
-        <tr> <td> Admno </td> <td><input type='text' value='$Addmno' </td> </tr>
-        <tr> <td> college </td> <td> <input type='text' value='$College' </td> </tr>";
+        
+        echo "<form method='POST'> <table class='table'> <tr> <td> name </td> <td> <input type='text' name='upname' value='$Name'/> </td> </tr>
+        <tr> <td> Admno </td> <td><input type='text' name='upadmno' value='$Addmno' </td> </tr>
+        <tr> <td> college </td> <td> <input type='text' name='upcollege' value='$College' </td> </tr>
+        <tr> <td> <button type='submit' value='$Roll' name='upbutton' class='btn btn-success'> Update </button> <br> </td> </tr>
+        </form>";
+       
     }
 }
 else{
     echo "invalid";
 }
 }
+if(isset($_POST["upbutton"]))
+{
+    $Upname=$_POST["upname"];
+    $Upadmno=$_POST["upadmno"];
+    $Upcollege=$_POST["upcollege"];
+    $Rol=$_POST["upbutton"];
+    $Servername="localhost";
+    $Dbusername="root";
+    $Dbpassword="";
+    $Dbname="Mydb";
+    $connection=new mysqli($Servername,$Dbusername,$Dbpassword,$Dbname);
+    $Sql="UPDATE `student` SET `Name`='$Upname',`Admno`=$Upadmno,`College`='$Upcollege' WHERE `RollNo`=$Rol";
+    $result=$connection->query($Sql);
+    if($result===TRUE)
+    {
+        echo "success";
+    }
+    else {
+        echo"failed";
+    }
+}
+
 ?>
